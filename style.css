@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ANIMASI BACKGROUND BERUBAH WARNA PERLAHAN */
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Warna gradasi */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite; /* Durasi 12 detik, berulang terus */
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* KARTU UTAMA */
+.card-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.85); /* Agak transparan (glassmorphism) */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+/* FOTO BANNER / SAMPUL */
+.banner-container {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FOTO PROFIL (TUMPANG TINDIH DENGAN BANNER) */
+.profile-container {
+    padding: 0 20px;
+    margin-top: -50px; /* Menaikkan foto profil ke atas banner */
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nama {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.bio {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* TOMBOL-TOMBOL LINK */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 25px;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #333;
+    color: #fff;
+}
+
+.icon {
+    font-size: 1.1rem;
+}
+/* Efek Teks Bergerak Bergelombang */
+.typing-text {
+    display: inline-block;
+    animation: textBounce 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textBounce {
+    0% {
+        transform: translateY(0);
+        color: #333;
+    }
+    100% {
+        transform: translateY(-4px); /* Teks sedikit naik turun */
+        color: #e73c7e; /* Warnanya berubah sedikit jadi pink estetik */
+    }
+}
+/* Tampilan Kartu Akun di dalam Dropdown */
+.account-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: #ffffff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.account-card:hover {
+    background: #e73c7e;
+    color: #ffffff;
+}
+
+/* Foto Profil Mini di Sub-Menu */
+.account-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0,0,0,0.1);
+}
+
+/* Susunan Teks Nama & Username */
+.account-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.account-handle {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Saat kartu disentuh, warna teks username ikut menyesuaikan */
+.account-card:hover .account-handle {
+    opacity: 0.9;
+}
+/* Mengatur ukuran logo aplikasi */
+.btn-logo {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+/* Sembunyikan sub-menu secara default, dan buat animasi buka-tutup halus */
+.sub-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+/* Ketika tag <details> dibuka oleh pengguna */
+details[open] .sub-links {
+    max-height: 500px; /* Cukup untuk menampung beberapa kartu akun */
+    padding: 10px 0;
+}
